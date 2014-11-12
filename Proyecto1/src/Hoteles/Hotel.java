@@ -16,6 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import Clientes.Cliente;
+import Recepciones.Recepcion;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -28,7 +31,7 @@ public class Hotel extends JFrame implements ActionListener {
 	JComboBox comboBox = new JComboBox();
 	String nombre, id;
 	int contador=0;
-
+	public static Cliente clientes=new Cliente();
 	public Hotel() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 484, 382);
@@ -53,6 +56,12 @@ public class Hotel extends JFrame implements ActionListener {
 		contentPane.add(comboBox);
 		
 		JButton btnRecepcion = new JButton("Recepcion");
+		btnRecepcion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Recepcion recepcion= new Recepcion((String)comboBox.getSelectedItem());
+				recepcion.setVisible(true);
+			}
+		});
 		btnRecepcion.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnRecepcion.setForeground(new Color(0, 0, 0));
 		btnRecepcion.setBounds(176, 174, 172, 54);
@@ -103,7 +112,7 @@ public class Hotel extends JFrame implements ActionListener {
 		btnGenerar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField_1.setText(Integer.toString(contador));
-				contador++;
+				
 			}
 		});
 		
@@ -115,9 +124,27 @@ public class Hotel extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				id = textField_1.getText();
 				nombre = textField.getText();
+				String buscar;
+				boolean b=true;
+				int indice=-1;
+				for (int i= 0; i<comboBox.getItemCount() ; i++){
+					buscar= (String) comboBox.getItemAt(i);
+				   if (buscar.contains(nombre)|| buscar.endsWith(id)) {
+					   JOptionPane.showMessageDialog(null, "El hotel "+nombre+" ya existe o el id ya esta siendo utilizado");
+				      b=false;
+					   break;
+				   }
+				}
+				if(b){
+					
 				comboBox.addItem(nombre+" "+id);
 				textField_1.setText(" ");
 				textField.setText(" ");
+				contador++;
+				JOptionPane.showMessageDialog(null, "Se creó un nuevo hotel.");
+				
+				}
+				
 			}
 		});
 		
@@ -140,6 +167,7 @@ public class Hotel extends JFrame implements ActionListener {
 				if(indice==-1){
 					JOptionPane.showMessageDialog(null, "No se encontraron coincidencias");
 				}else{
+					JOptionPane.showMessageDialog(null, "Se removio el Hotel con ID: "+id);
 					comboBox.removeItemAt(indice);
 				}
 			}
@@ -154,13 +182,13 @@ public class Hotel extends JFrame implements ActionListener {
 				id = textField_1.getText();
 				nombre = textField.getText();
 				String buscar;
-				boolean b=false;
+				boolean b=true;
 				int indice=-1;
 				for (int i= 0; i<comboBox.getItemCount() ; i++){
 					buscar= (String) comboBox.getItemAt(i);
 				   if (buscar.contains(nombre)|| buscar.endsWith(id)) {
 					   JOptionPane.showMessageDialog(null, "El hotel "+nombre+" ya existe o el id ya esta siendo utilizado");
-				      b=true;
+				      b=false;
 					   break;
 				   }
 				}

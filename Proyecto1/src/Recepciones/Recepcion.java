@@ -1,6 +1,5 @@
 package Recepciones;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -13,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Clientes.Cliente;
+import Hoteles.Hotel;
 import Hoteles.PanelImagen;
 
 public class Recepcion extends JFrame implements ActionListener{
@@ -23,6 +24,7 @@ public class Recepcion extends JFrame implements ActionListener{
 	JButton Check= new JButton("Entrada/Salida");
 	JButton Servicios = new JButton("Servicios");
 	JButton btnClientes = new JButton("Clientes");
+	
 
 	String nombre;
 	public Recepcion(String Nombre) {
@@ -79,7 +81,7 @@ public class Recepcion extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()== btnClientes){
-			
+			Hotel.clientes.setVisible(true);
 		}
 		if (e.getSource()==Servicios){
 			
