@@ -48,7 +48,7 @@ public class Cliente extends JFrame implements ActionListener{
 		lblClientesHotel.setBounds(179, 25, 178, 40);
 		contentPane.add(lblClientesHotel);
 		
-		JLabel lblHotelCentro = new JLabel(" -- HOTEL CENTRO AMERICA--");
+		JLabel lblHotelCentro = new JLabel(" -- HOTELES CENTRO AMERICA--");
 		lblHotelCentro.setForeground(new Color(178, 34, 34));
 		lblHotelCentro.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblHotelCentro.setBounds(122, 334, 304, 40);
@@ -137,6 +137,7 @@ public class Cliente extends JFrame implements ActionListener{
 		btnObtener.setBounds(30, 276, 139, 47);
 		contentPane.add(btnObtener);
 		btnObtener.addActionListener(this);
+		
 		
 		setVisible(false);
 	}

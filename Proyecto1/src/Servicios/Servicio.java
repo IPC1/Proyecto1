@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Hoteles.PanelImagen;
+import Recepciones.Recepcion;
 
 public class Servicio extends JFrame implements ActionListener{
 
@@ -100,7 +101,7 @@ public class Servicio extends JFrame implements ActionListener{
 		contentPane.add(btnDiscoteca);
 		btnDiscoteca.addActionListener(this);
 		
-		JLabel lblHotelDeCentro = new JLabel("HOTEL DE CENTRO AMERICA");
+		JLabel lblHotelDeCentro = new JLabel("--"+Recepcion.nombre.toUpperCase()+"--");
 		lblHotelDeCentro.setForeground(new Color(210, 105, 30));
 		lblHotelDeCentro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHotelDeCentro.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -277,7 +278,8 @@ public class Servicio extends JFrame implements ActionListener{
 		JLabel lblHotelDeCentro = new JLabel();
 		lblHotelDeCentro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHotelDeCentro.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblHotelDeCentro.setBounds(0, 241, 351, 14);
+		lblHotelDeCentro.setForeground(new Color(210, 105, 30));
+		lblHotelDeCentro.setBounds(42, 446, 386, 31);
 		pane.add(lblHotelDeCentro);
 		
 		String nl = System.getProperty("line.separator");

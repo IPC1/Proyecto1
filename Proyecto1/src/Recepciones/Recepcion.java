@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
+import Habitaciones.Checks;
 import Hoteles.Hotel;
 import Hoteles.PanelImagen;
 import Servicios.Servicio;
@@ -22,9 +23,8 @@ public class Recepcion extends JFrame implements ActionListener{
 	JButton Check= new JButton("Entrada/Salida");
 	JButton Servicios = new JButton("Servicios");
 	JButton btnClientes = new JButton("Clientes");
+	public static String nombre;
 	
-
-	String nombre;
 	public Recepcion(String Nombre) {
 		nombre= Nombre;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -87,7 +87,8 @@ public class Recepcion extends JFrame implements ActionListener{
 		}if (e.getSource()==Recepciones){
 			
 		}if (e.getSource()==Check){
-			
+			Checks checks= new Checks();
+			checks.setVisible(true);
 		}
 	}
 }

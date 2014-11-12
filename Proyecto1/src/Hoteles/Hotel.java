@@ -107,7 +107,7 @@ public class Hotel extends JFrame implements ActionListener {
 		JButton btnGenerar = new JButton("Generar");
 		btnGenerar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnGenerar.setForeground(new Color(0, 0, 0));
-		btnGenerar.setBounds(184, 104, 93, 25);
+		btnGenerar.setBounds(184, 104, 97, 25);
 		Pane.add(btnGenerar);
 		btnGenerar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
