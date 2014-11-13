@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -48,7 +49,7 @@ public class Checks extends JFrame implements ActionListener {
 	
 	DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 	int noEdificio, habitacion, nit,nivel,dias;
-	String nombre,edificio;
+	String edificio;
 	Date entrada, salida;
 	
 	
@@ -166,6 +167,19 @@ public class Checks extends JFrame implements ActionListener {
 		Nivel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(Nivel);
 		Nivel.setColumns(10);
+		btnNivel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				edificio=(String)comboBox.getSelectedItem();
+        		noEdificio=Integer.parseInt(NoEdificio.getText());
+        		habitacion= Integer.parseInt(NoHabitacion.getText());
+            	if (edificio=="Torre"){
+    				Nivel.setText(Integer.toString(torre.Nivel(habitacion,noEdificio)));
+    			}else if(edificio=="Modulo"){
+    				Nivel.setText(Integer.toString(modulo.Nivel(habitacion,noEdificio)));
+    			}
+				
+			}
+		});
 		
 		btnNivel.setBounds(267, 110, 64, 31);
 		btnNivel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -185,6 +199,7 @@ public class Checks extends JFrame implements ActionListener {
 		contentPane.add(Dias);
 		Dias.setColumns(10);
 		
+		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(25, 235, 591, 32);
 		contentPane.add(separator);
@@ -196,6 +211,15 @@ public class Checks extends JFrame implements ActionListener {
 		contentPane.add(lblhotelDeCentro);
 		
 		JButton btnBuscar = new JButton("Buscar por Huesped");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nit=Integer.parseInt(Nit.getText());
+				if((!(torre.Buscar(nit))) || (!(modulo.Buscar(nit)))){
+					JOptionPane.showMessageDialog (null,"Cliente no encontrado");
+				}
+				
+			}
+		});
 		btnBuscar.setBounds(431, 128, 201, 32);
 		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnBuscar.setForeground(new Color(47, 79, 79));
@@ -206,6 +230,16 @@ public class Checks extends JFrame implements ActionListener {
 		btnDias.setForeground(new Color(47, 79, 79));
 		btnDias.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		contentPane.add(btnDias);
+		btnDias.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	entrada=(Date) Entrada.getValue();
+        		salida=(Date) Salida.getValue();
+            	final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000;
+    			long diferencia = ( salida.getTime()-entrada.getTime())/MILLSECS_PER_DAY ; 
+    			Dias.setText(""+diferencia);
+                    }
+        });
 		
 		setVisible(false);
 		
@@ -215,7 +249,51 @@ public class Checks extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		edificio=(String)comboBox.getSelectedItem();
+		noEdificio=Integer.parseInt(NoEdificio.getText());
+		habitacion= Integer.parseInt(NoHabitacion.getText());
+		nit=Integer.parseInt(Nit.getText());
+		nivel=Integer.parseInt(Nivel.getText());
+		dias= Integer.parseInt(Dias.getText());
+		entrada=(Date) Entrada.getValue();
+		salida=(Date) Salida.getValue();
 		// TODO Auto-generated method stub
+		if(e.getSource()==btnEstado){
+			if (edificio=="Torre"){
+				torre.Estado(habitacion, noEdificio);
+			}else if(edificio=="Modulo"){
+				modulo.Estado(habitacion, noEdificio);
+			}
+			
+		}else if(e.getSource()==btnCuenta){
+			if (edificio=="Torre"){
+				torre.Cuenta (habitacion, noEdificio);
+			}else if(edificio=="Modulo"){
+				modulo.Cuenta(habitacion, noEdificio);
+			}
+			
+		}else if(e.getSource()==btnEspecificaciones){
+			if (edificio=="Torre"){
+				torre.Especificaciones(habitacion, noEdificio);
+			}else if(edificio=="Modulo"){
+				modulo.Especificaciones(habitacion, noEdificio);
+			}
+			
+		}else if(e.getSource()==btnCheckIn){
+			if (edificio=="Torre"){
+				torre.CheckIn(noEdificio, habitacion, nit, dias, entrada, salida);
+			}else if(edificio=="Modulo"){
+				modulo.CheckIn(noEdificio, habitacion, nit, dias, entrada, salida);
+			}
+			
+		}else if(e.getSource()==btnCheckOut){
+			if (edificio=="Torre"){
+				torre.CheckOut(noEdificio, habitacion);
+			}else if(edificio=="Modulo"){
+				modulo.CheckOut(noEdificio, habitacion);
+			}
+			
+		}
 		
 	}
 

@@ -101,6 +101,20 @@ public class Torres {
 		
 	}
 	
+	public boolean Buscar(int nit){
+	Nodo_Habitaciones temp=inicio;
+	boolean b=false;
+		while(nit!=temp.getNIT()){
+	
+			temp=temp.siguiente;
+	}
+	if(temp!=null){
+	Especificaciones(temp.getHabitacion(),temp.getTorre());
+	b=true;	
+	}
+	return b;
+	}
+	
 	public int Nivel(int NoHabitacion, int torre){
 		Nodo_Habitaciones temp=inicio;
 		int nivel=0;
@@ -119,7 +133,7 @@ public class Torres {
 		return nivel;
 	}
 	
-	public float Cuenta(int NoHabitacion, int torre){
+	public void Cuenta(int NoHabitacion, int torre){
 		Nodo_Habitaciones temp=inicio;
 		float nivel=0;
 		while(torre!=temp.getTorre()){
@@ -131,13 +145,14 @@ public class Torres {
 		if (torre==temp.getTorre()){
 			if(NoHabitacion==temp.getHabitacion()){
 				nivel=temp.getMonto();
+				JOptionPane.showMessageDialog (null,"Cuenta de la habitacion"+NoHabitacion+": "+nivel);
 			}
 		}else JOptionPane.showMessageDialog (null,"Error al buscar Cuenta");
 		
-		return nivel;
+	
 	}
 	
-	public String Estado(int NoHabitacion, int torre){
+	public void Estado(int NoHabitacion, int torre){
 		Nodo_Habitaciones temp=inicio;
 		String nivel=null;
 		while(torre!=temp.getTorre()){
@@ -150,11 +165,12 @@ public class Torres {
 			if(NoHabitacion==temp.getHabitacion()){
 				if(temp.getNIT()==0)
 					nivel="desocupada";
-				else nivel="ocupada";	
+				else nivel="ocupada";
+				JOptionPane.showMessageDialog (null,"Habitacion "+nivel);
 				}
 			}else JOptionPane.showMessageDialog (null,"Error al buscar Estado");
 		
-		return nivel;
+		
 	}
 	
 	public void Especificaciones(int NoHabitacion, int torre){
