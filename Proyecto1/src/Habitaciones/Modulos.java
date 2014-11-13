@@ -129,25 +129,27 @@ public class Modulos {
 	
 	public void Estado(int NoHabitacion, int torre){
 		Nodo_Habitaciones temp=inicio;
-		String nivel=null;
-		while(torre!=temp.getTorre()){
-			temp=temp.siguiente;
-		}
-		while (NoHabitacion!=temp.getHabitacion()){
-			temp=temp.siguiente;
-		}
-		if (torre==temp.getTorre()){
+		String estado=null;
+		while(temp!=null){	
+		if(torre==temp.getTorre()){
 			if(NoHabitacion==temp.getHabitacion()){
-				if(temp.getNIT()==0)
-					nivel="desocupada";
-				else nivel="ocupada";
-				JOptionPane.showMessageDialog (null,"Habitacion "+nivel);
+				if(temp.getNIT()==0){
+					estado="desocupada";
+				}else{
+					estado="ocupada";
 				}
-			}else JOptionPane.showMessageDialog (null,"Error al buscar Estado");
-		
-		
+				JOptionPane.showMessageDialog (null,"Habitacion "+estado);
+				break;
+			}else{
+				temp=temp.siguiente;
+			}
+		}else{
+			temp=temp.siguiente;
+		}
+		}		
 	}
 	
+		
 	public void Especificaciones(int NoHabitacion, int torre){
 		Nodo_Habitaciones temp=inicio;
 		String nivel=null;

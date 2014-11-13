@@ -137,11 +137,22 @@ public class Checks extends JFrame implements ActionListener {
 		Salida.setBounds(180, 196, 111, 20);
 		contentPane.add(Salida);
 		Salida.setColumns(10);
+		btnEstado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				edificio=(String)comboBox.getSelectedItem();
+				noEdificio=Integer.parseInt(NoEdificio.getText());
+				habitacion= Integer.parseInt(NoHabitacion.getText());
+					if (edificio=="Torre"){
+						torre.Estado(habitacion, noEdificio);
+					}else if(edificio=="Modulo"){
+						modulo.Estado(habitacion, noEdificio);
+					}
+			}
+		});
 		btnEstado.setBounds(57, 258, 141, 35);
 		btnEstado.setForeground(new Color(47, 79, 79));
 		
 		btnEstado.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnEstado.addActionListener(this);
 		contentPane.add(btnEstado);
 		btnCuenta.setBounds(57, 304, 142, 35);
 		btnCuenta.setForeground(new Color(47, 79, 79));
@@ -258,14 +269,7 @@ public class Checks extends JFrame implements ActionListener {
 		entrada=(Date) Entrada.getValue();
 		salida=(Date) Salida.getValue();
 		// TODO Auto-generated method stub
-		if(a.getSource()==btnEstado){
-			if (edificio=="Torre"){
-				torre.Estado(habitacion, noEdificio);
-			}else if(edificio=="Modulo"){
-				modulo.Estado(habitacion, noEdificio);
-			}
-			
-		}else if(a.getSource()==btnCuenta){
+		if(a.getSource()==btnCuenta){
 			if (edificio=="Torre"){
 				torre.Cuenta (habitacion, noEdificio);
 			}else if(edificio=="Modulo"){
