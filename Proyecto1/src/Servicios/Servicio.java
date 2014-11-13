@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Habitaciones.Checks;
 import Hoteles.PanelImagen;
 import Recepciones.Recepcion;
 
@@ -33,9 +34,12 @@ public class Servicio extends JFrame implements ActionListener{
 	JButton btnDiscoteca = new JButton("Discoteca");
 	JButton btnRegresar= new JButton("Menu Anterior");
 	JTextField txtMonto, textField, textField_1;
-	JComboBox comboBox;
+	JComboBox comboBox = new JComboBox();
 	private final JButton btnCuenta = new JButton("A\u00F1adir a Cuenta");
 	
+	String edificio;
+	int noEdificio,habitacion;
+	float monto;
 	public Servicio() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 523, 526);
@@ -200,19 +204,31 @@ public class Servicio extends JFrame implements ActionListener{
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		pane.add(scroll);
+		
+		
+		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		comboBox.setBounds(159, 326, 66, 20);
+		comboBox.addItem("Torre");
+		comboBox.addItem("Modulo");
+		pane.add(comboBox);
+		
 		btnCuenta.setForeground(new Color(128, 0, 0));
 		btnCuenta.setFont(new Font("Tunga", Font.BOLD, 15));
-		
 		btnCuenta.setBounds(95, 400, 130, 36);
 		pane.add(btnCuenta);
 		btnCuenta.addActionListener(new ActionListener() {
  
             public void actionPerformed(ActionEvent e){
          
-            	String edificio=(String)comboBox.getSelectedItem();
-        		int noEdificio=Integer.parseInt(textField_1.getText());
-        		int habitacion= Integer.parseInt(textField.getText());
-        		
+            	edificio=(String)comboBox.getSelectedItem();
+        		noEdificio=Integer.parseInt(textField_1.getText());
+        		habitacion= Integer.parseInt(textField.getText());
+        		monto= Float.valueOf(txtMonto.getText());
+        		if (edificio=="Torre"){
+					Checks.torre.AgregarCuenta(habitacion, noEdificio, monto);
+				}else if(edificio=="Modulo"){
+					Checks.modulo.AgregarCuenta(habitacion, noEdificio, monto);
+				}
                
             }
         });
@@ -229,7 +245,7 @@ public class Servicio extends JFrame implements ActionListener{
             }
         });      
 		
-		txtMonto = new JTextField();
+		txtMonto = new JTextField("00.00");
 		txtMonto.setBounds(150, 357, 75, 20);
 		pane.add(txtMonto);
 		txtMonto.setColumns(10);
@@ -257,12 +273,7 @@ public class Servicio extends JFrame implements ActionListener{
 		lblEdificio.setBounds(65, 327, 63, 22);
 		pane.add(lblEdificio);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		comboBox.setBounds(159, 326, 66, 20);
-		comboBox.addItem("Torre");
-		comboBox.addItem("Modulo");
-		pane.add(comboBox);
+	
 		
 		JLabel lblNoEdificio = new JLabel("No.Edificio");
 		lblNoEdificio.setForeground(new Color(250, 235, 215));

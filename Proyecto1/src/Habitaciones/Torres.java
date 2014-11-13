@@ -150,8 +150,32 @@ public class Torres {
 				JOptionPane.showMessageDialog (null,"Cuenta de la habitacion"+NoHabitacion+": "+nivel);
 			}
 		}else JOptionPane.showMessageDialog (null,"Error al buscar Cuenta");
-		
-	
+	}
+	public void AgregarCuenta(int NoHabitacion, int torre, float monto){
+		Nodo_Habitaciones temp=inicio;
+		float nivel;
+		while(temp!=null){
+			if (torre==temp.getTorre()){
+			if(NoHabitacion==temp.getHabitacion()){
+				if(temp.getNIT()==0){
+					JOptionPane.showMessageDialog (null,"Habitacion desocupada");
+					break;
+				}else{
+					Cuenta(NoHabitacion,torre);
+					nivel=temp.getMonto();
+					nivel+=monto;
+					temp.setMonto(nivel);
+					JOptionPane.showMessageDialog (null,"Cuenta de la habitacion"+NoHabitacion+": "+temp.getMonto());
+				break;
+				}
+				
+			}else {
+				temp=temp.siguiente;
+			}
+		}else {
+			temp=temp.siguiente;
+		}
+		}
 	}
 	
 	public void Estado(int NoHabitacion, int torre){
