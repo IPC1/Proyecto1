@@ -161,6 +161,7 @@ public class Cliente extends JFrame implements ActionListener{
 			direccion=txtDireccion.getText();
 			DPI=Integer.parseInt(dpi.getText());
 			clientes.insertar(nombre, direccion, nit, DPI, referencia);
+		
 		}
 	}
 

@@ -97,16 +97,16 @@ public class Modulos {
 	public boolean Buscar(int nit){
 		Nodo_Habitaciones temp=inicio;
 		boolean b=false;
-			while(nit!=temp.getNIT()){
-		
-				temp=temp.siguiente;
+		while(temp!=null){	
+		if(nit==temp.getNIT()){
+			Especificaciones(temp.getHabitacion(), temp.getTorre());
+			b= true;
+			temp=temp.siguiente;
+		}else{
+			temp=temp.siguiente;
 		}
-		if(temp!=null){
-		Especificaciones(temp.getHabitacion(),temp.getTorre());
-		b=true;	
-		}
-		return b;
-		}
+		}return b;
+				}
 	
 	public void Cuenta(int NoHabitacion, int torre){
 		Nodo_Habitaciones temp=inicio;
@@ -164,7 +164,7 @@ public class Modulos {
 					JOptionPane.showMessageDialog (null,"Habitacion del Hotel "+temp.getHotel()+
 							nl+"Habitacion desocupada"+nl+
 							"Tipo de Habitacion"+temp.getTipoHabitacion()+
-							nl+"Ubicada en la torre "+temp.getTorre()+" Nivel:   "+temp.getNivel()+
+							nl+"Ubicada en el modulo: "+temp.getTorre()+" Nivel:   "+temp.getNivel()+
 							nl+"Con un costo de: "+temp.getMonto());
 				else{
 					JOptionPane.showMessageDialog (null,"Habitacion del Hotel "+temp.getHotel()+

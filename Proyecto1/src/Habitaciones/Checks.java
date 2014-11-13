@@ -214,10 +214,10 @@ public class Checks extends JFrame implements ActionListener {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nit=Integer.parseInt(Nit.getText());
-				if((!(torre.Buscar(nit))) || (!(modulo.Buscar(nit)))){
-					JOptionPane.showMessageDialog (null,"Cliente no encontrado");
+				if (torre.Buscar(nit)==false){
+					if(modulo.Buscar(nit)==false)
+						JOptionPane.showMessageDialog (null,"Cliente no encontrado");
 				}
-				
 			}
 		});
 		btnBuscar.setBounds(431, 128, 201, 32);
@@ -248,7 +248,7 @@ public class Checks extends JFrame implements ActionListener {
 
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent a) {
 		edificio=(String)comboBox.getSelectedItem();
 		noEdificio=Integer.parseInt(NoEdificio.getText());
 		habitacion= Integer.parseInt(NoHabitacion.getText());
@@ -258,35 +258,35 @@ public class Checks extends JFrame implements ActionListener {
 		entrada=(Date) Entrada.getValue();
 		salida=(Date) Salida.getValue();
 		// TODO Auto-generated method stub
-		if(e.getSource()==btnEstado){
+		if(a.getSource()==btnEstado){
 			if (edificio=="Torre"){
 				torre.Estado(habitacion, noEdificio);
 			}else if(edificio=="Modulo"){
 				modulo.Estado(habitacion, noEdificio);
 			}
 			
-		}else if(e.getSource()==btnCuenta){
+		}else if(a.getSource()==btnCuenta){
 			if (edificio=="Torre"){
 				torre.Cuenta (habitacion, noEdificio);
 			}else if(edificio=="Modulo"){
 				modulo.Cuenta(habitacion, noEdificio);
 			}
 			
-		}else if(e.getSource()==btnEspecificaciones){
+		}else if(a.getSource()==btnEspecificaciones){
 			if (edificio=="Torre"){
 				torre.Especificaciones(habitacion, noEdificio);
 			}else if(edificio=="Modulo"){
 				modulo.Especificaciones(habitacion, noEdificio);
 			}
 			
-		}else if(e.getSource()==btnCheckIn){
+		}else if(a.getSource()==btnCheckIn){
 			if (edificio=="Torre"){
 				torre.CheckIn(noEdificio, habitacion, nit, dias, entrada, salida);
 			}else if(edificio=="Modulo"){
 				modulo.CheckIn(noEdificio, habitacion, nit, dias, entrada, salida);
 			}
 			
-		}else if(e.getSource()==btnCheckOut){
+		}else if(a.getSource()==btnCheckOut){
 			if (edificio=="Torre"){
 				torre.CheckOut(noEdificio, habitacion);
 			}else if(edificio=="Modulo"){

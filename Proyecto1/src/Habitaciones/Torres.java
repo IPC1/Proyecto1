@@ -104,16 +104,18 @@ public class Torres {
 	public boolean Buscar(int nit){
 	Nodo_Habitaciones temp=inicio;
 	boolean b=false;
-		while(nit!=temp.getNIT()){
+	while(temp!=null){	
+	if(nit==temp.getNIT()){
+		Especificaciones(temp.getHabitacion(), temp.getTorre());
+		b= true;
+		temp=temp.siguiente;
+	}else{
+		temp=temp.siguiente;
+	}
+	}return b;
+			}
 	
-			temp=temp.siguiente;
-	}
-	if(temp!=null){
-	Especificaciones(temp.getHabitacion(),temp.getTorre());
-	b=true;	
-	}
-	return b;
-	}
+	
 	
 	public int Nivel(int NoHabitacion, int torre){
 		Nodo_Habitaciones temp=inicio;
@@ -194,7 +196,7 @@ public class Torres {
 				else{
 					JOptionPane.showMessageDialog (null,"Habitacion del Hotel "+temp.getHotel()+
 							nl+"Tipo de Habitacion"+temp.getTipoHabitacion()+
-							nl+"Ubicada en el modulo: "+temp.getTorre()+" Nivel: "+temp.getNivel()+
+							nl+"Ubicada en el torre: "+temp.getTorre()+" Nivel: "+temp.getNivel()+
 							nl+"Con un monto en la cuenta total de: "+temp.getMonto()+
 							nl+"Ocupada por el cliente: "+Cliente.clientes.ObtenerString(temp.getNIT()));
 				}
