@@ -9,6 +9,7 @@ public class Nodo_Habitaciones {
 		private int NIT, Torre,nivel, Habitacion;
 		private float monto;
 		
+		
 		Nodo_Habitaciones siguiente;
 		
 		public Nodo_Habitaciones (Date fechaInicio, Date fechaFin,String tipoHabitacion, int modulo, int habitacion, 

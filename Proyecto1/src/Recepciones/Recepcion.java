@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import Habitaciones.Checks;
 import Hoteles.Hotel;
 import Hoteles.PanelImagen;
+import Reservaciones.Reservacion;
 import Servicios.Servicio;
 
 public class Recepcion extends JFrame implements ActionListener{
@@ -69,7 +70,7 @@ public class Recepcion extends JFrame implements ActionListener{
 			JLabel lblHotel = new JLabel("RECEPCION "+nombre.toUpperCase());
 			lblHotel.setForeground(Color.WHITE);
 			lblHotel.setFont(new Font("Trajan Pro", Font.BOLD, 20));
-			lblHotel.setBounds(75, 28, 306, 42);
+			lblHotel.setBounds(56, 28, 397, 42);
 			contentPane.add(lblHotel);
 			btnClientes.addActionListener(this);
 			
@@ -85,6 +86,7 @@ public class Recepcion extends JFrame implements ActionListener{
 			Servicio servicios =new Servicio();
 			
 		}if (e.getSource()==Recepciones){
+			Reservacion reservacion= new Reservacion();
 			
 		}if (e.getSource()==Check){
 			Checks checks= new Checks();

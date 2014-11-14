@@ -50,7 +50,7 @@ public class Servicio extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		setVisible(true);
 		
-		btnRestaurante.setBounds(168, 296, 115, 48);
+		btnRestaurante.setBounds(168, 296, 130, 48);
 		contentPane.add(btnRestaurante);
 		btnRestaurante.setForeground(new Color(128, 0, 0));
 		btnRestaurante.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -81,7 +81,7 @@ public class Servicio extends JFrame implements ActionListener{
 		contentPane.add(btnPolideportivo);
 		btnPolideportivo.addActionListener(this);
 		
-		btnMasterSnack.setBounds(32, 237, 121, 48);
+		btnMasterSnack.setBounds(32, 237, 130, 48);
 		btnMasterSnack.setForeground(new Color(128, 0, 0));
 		btnMasterSnack.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		contentPane.add(btnMasterSnack);

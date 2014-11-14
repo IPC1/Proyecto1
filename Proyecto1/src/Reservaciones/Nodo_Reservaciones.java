@@ -2,36 +2,36 @@ package Reservaciones;
 
 import java.util.Date;
 
-public class Nodo_Clientes {
+
+public class Nodo_Reservaciones {
 	private String Nombre, TipoHabitacion, Referencia, edificio;
-	private Date entrada, salida;
+	private Date Entrada, Salida;
 	private int NIT, NoReservacion, NoEdificio, Habitacion,dias;
 	private float monto;
-	Nodo_Clientes siguiente;
+	Nodo_Reservaciones siguiente;
 	
-	public Nodo_Clientes (int noReservacion, Date fechaInicio, Date fechaFin,int dias,
-			String tipoHabitacion, String edifiio, int NoEdificio, int habitacion, 
-			String nombre,int nit,String referencia,Nodo_Clientes s){
+	public Nodo_Reservaciones (int noReservacion, Date fechaInicio, Date fechaFin,int dias,String tipoHabitacion, String edificio, int NoEdificio, int habitacion, String nombre, 
+			int nit,String referencia,Nodo_Reservaciones s){
 		
 		NoReservacion=noReservacion;
 		Nombre=nombre;
 		TipoHabitacion=tipoHabitacion;
 		Referencia=referencia;
-		entrada=fechaInicio;
-		salida=fechaFin;
+		Entrada	=fechaInicio;
+		Salida=fechaFin;
 		this.dias=dias;
 		NIT= nit;
 		this.edificio=edificio;
 		this.NoEdificio=NoEdificio;
 		Habitacion=habitacion;
-		siguiente=s;
-		
 		if (TipoHabitacion=="Sencilla")
 			monto=200;
 		else if (TipoHabitacion=="Regular")
 			monto=350;
 		else if (TipoHabitacion=="Exclusiva")
 			monto=500;
+		
+		siguiente=s;
 	}
 
 	public String getNombre() {
@@ -67,19 +67,19 @@ public class Nodo_Clientes {
 	}
 
 	public Date getEntrada() {
-		return entrada;
+		return Entrada;
 	}
 
 	public void setEntrada(Date entrada) {
-		this.entrada = entrada;
+		Entrada = entrada;
 	}
 
 	public Date getSalida() {
-		return salida;
+		return Salida;
 	}
 
 	public void setSalida(Date salida) {
-		this.salida = salida;
+		Salida = salida;
 	}
 
 	public int getNIT() {
@@ -130,14 +130,13 @@ public class Nodo_Clientes {
 		this.monto = monto;
 	}
 
-	public Nodo_Clientes getSiguiente() {
+	public Nodo_Reservaciones getSiguiente() {
 		return siguiente;
 	}
 
-	public void setSiguiente(Nodo_Clientes siguiente) {
+	public void setSiguiente(Nodo_Reservaciones siguiente) {
 		this.siguiente = siguiente;
 	}
-	
 	
 
 }

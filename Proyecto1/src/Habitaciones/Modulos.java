@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 import Clientes.Cliente;
+import Hoteles.Hotel;
 import Recepciones.Recepcion;
 
 
@@ -198,7 +199,7 @@ public class Modulos {
 							nl+"Tipo de Habitacion"+temp.getTipoHabitacion()+
 							nl+"Ubicada en el modulo: "+temp.getTorre()+" Nivel: "+temp.getNivel()+
 							nl+"Con un monto en la cuenta total de: "+temp.getMonto()+
-							nl+"Ocupada por el cliente: "+Cliente.clientes.ObtenerString(temp.getNIT()));
+							nl+"Ocupada por el cliente: "+Hotel.clientes.clientes.ObtenerString(temp.getNIT()));
 				}
 			}		
 		}
