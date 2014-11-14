@@ -20,30 +20,15 @@ public void Agregar(int noReservacion, Date fecha, Date fechaF,int dias,String t
 		int nit,String referencia){
 	boolean b=false;
 	Nodo_Reservaciones temp =inicio;
-	while (temp!=null){
-		if (fecha.getYear()== temp.getEntrada().getYear() && fecha.getMonth()== temp.getEntrada().getMonth() && fecha.getDay()== temp.getEntrada().getDay()){
-			if(edificio==temp.getEdificio()){
-				if(NoEdificio==temp.getNoEdificio()){
-					if (habitacion==temp.getHabitacion()){
-							JOptionPane.showMessageDialog(null,"Existe una reserva con las mismas indicaciones. A nombre de:"+nl+
-									Hotel.clientes.clientes.ObtenerString(temp.getNIT())+
-						nl+" Para crear la reservación necesita ir a colas");
-							b=true;
-							break;
-					}
-				}
-				
-			}
-		}temp=temp.siguiente;
-	}
-	if(b=false){
+	b=Buscar(fecha,dias,edificio, NoEdificio, habitacion);
+	if(b==false){
 		Nodo_Reservaciones nuevo= new Nodo_Reservaciones(noReservacion, fecha, fechaF,dias,tipoHabitacion, edificio, NoEdificio, habitacion,nombre, 
 			nit,referencia,inicio);
 		inicio= nuevo;
+		JOptionPane.showMessageDialog(null,"Se ha guardado una reservacion");
 		if (fin==null){
 		fin=inicio;
 		}	
-		JOptionPane.showMessageDialog(null,"Se ha gurdado una reservacion");
 	}
 	
 	}
@@ -70,8 +55,9 @@ public void Agregar(int noReservacion, Date fecha, Date fechaF,int dias,String t
 			 }
 		
 	}
-	public void Buscar(Date fecha,int dias, String edificio, int NoEdificio, int habitacion){
+	public boolean Buscar(Date fecha,int dias, String edificio, int NoEdificio, int habitacion){
 		Nodo_Reservaciones temp =inicio;
+		boolean b= false;
 		while (temp!=null){
 			if (habitacion==temp.getHabitacion()){
 				if(edificio==temp.getEdificio()){
@@ -80,17 +66,20 @@ public void Agregar(int noReservacion, Date fecha, Date fechaF,int dias,String t
 							if(dias== temp.getDias()){
 								JOptionPane.showMessageDialog(null,"Existe una reservacion con para las mismas condiciones."+
 							nl+" Para crear la reservación necesita ir a colas");
+								b=true;
 								break;
 							}else if(dias<temp.getDias()){
 								JOptionPane.showMessageDialog(null,"Existe una reservacion con para la misma habitacion con ingreso"+
 										nl+"dia y salida "+(temp.getDias()-dias)+" dias despues."+
 										nl+" Para crear la reservación necesita ir a colas");
+								b=true;
 							}else if(dias>temp.getDias()){
 								JOptionPane.showMessageDialog(null,"Existe una reservacion con para la misma habitacion con ingreso"+
 										nl+"dia y salida "+(dias-temp.getDias())+" dias antes."+
 										nl+" Para crear la reservación necesita ir a colas");
+								b=true;
 							}
-							
+														
 						}
 					}
 					
@@ -98,8 +87,9 @@ public void Agregar(int noReservacion, Date fecha, Date fechaF,int dias,String t
 			}temp=temp.siguiente;
 		}
 		if(temp==null){
-			JOptionPane.showMessageDialog(null,"No hay coincidencias");
+			JOptionPane.showMessageDialog(null,"No hay reservacion que coincida.");
 		}
+		return b;
 	}
 	
 	public String Listar(){
