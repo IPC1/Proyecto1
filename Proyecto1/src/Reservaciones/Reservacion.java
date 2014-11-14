@@ -21,8 +21,9 @@ import Recepciones.Recepcion;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
 
-public class Reservacion extends JFrame implements ActionListener{
+public class Reservacion extends JFrame implements ActionListener, Serializable{
 
 	JFrame frame= new JFrame();
 	PanelImagen contentPane;

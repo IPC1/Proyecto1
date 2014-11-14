@@ -1,8 +1,10 @@
 package Clientes;
 
+import java.io.Serializable;
+
 import javax.swing.JOptionPane;
 
-public class Lista_Clientes {
+public class Lista_Clientes implements Serializable{
 	Nodo_Clientes inicio, fin;
 	String nl = System.getProperty("line.separator");
 	Lista_Clientes(){
@@ -100,5 +102,57 @@ public class Lista_Clientes {
 			Texto="La lista de CLientes esta vacia";
 		}
 		return Texto;
+	}
+	
+	public void AgregarContador(float monto, int nit){
+		Nodo_Clientes temp =inicio;
+		while (temp!=null){
+			if (nit== temp.getNit()){
+				monto+=temp.getContador();
+				temp.setContador(monto);
+				break;
+				}
+			temp=temp.siguiente;
+			}
+		if (temp==null){
+			JOptionPane.showMessageDialog(null,"No se ha encontrado ningun cliente con el NIT: "+nit);
+		}
+	}
+	
+	public void OrdenarClientesDes(){
+		Nodo_Clientes temp=inicio;
+		String nombre, direccion, telefono;
+		int nit,DPI;
+		float contador;
+		while(temp.siguiente!=null){
+			Nodo_Clientes temp2=temp.siguiente;
+			while(temp2!=null){
+				if(temp.getContador()<temp2.getContador()){
+					nombre=temp.getNombre();
+					direccion=temp.getDireccion();
+					telefono=temp.getTelefono();
+					nit=temp.getNit();
+					DPI=temp.getDPI();
+					contador=temp.getContador();
+					
+					temp.setNombre(temp2.getNombre());
+					temp.setDireccion(temp2.getDireccion());
+					temp.setTelefono(temp2.getTelefono());
+					temp.setNit(temp2.getNit());
+					temp.setDPI(temp2.getDPI());
+					temp.setContador(temp2.getContador());
+					
+					temp2.setNombre(nombre);
+					temp2.setDireccion(direccion);
+					temp2.setTelefono(telefono);
+					temp2.setNit(nit);
+					temp2.setDPI(DPI);
+					temp2.setContador(contador);
+			}
+				temp2=temp2.siguiente;
+			}
+			
+		}
+		temp=temp.siguiente;
 	}
 }

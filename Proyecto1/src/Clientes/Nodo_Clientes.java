@@ -1,9 +1,11 @@
 package Clientes;
 
-public class Nodo_Clientes {
-	String nombre, direccion, telefono;
-	int nit,DPI;
-	int contador=0;
+import java.io.Serializable;
+
+public class Nodo_Clientes implements Serializable {
+	private String nombre, direccion, telefono;
+	private int nit,DPI;
+	private float contador=0;
 	Nodo_Clientes siguiente;
 	Nodo_Clientes(String nombre, String direccion, int nit,int DPI,String referencia,Nodo_Clientes s){
 		this.nombre=nombre;
@@ -12,7 +14,6 @@ public class Nodo_Clientes {
 		this.DPI=DPI;
 		this.telefono=referencia;
 		siguiente=s;
-		contador+=1;
 	}
 	public String getNombre() {
 		return nombre;
@@ -44,10 +45,10 @@ public class Nodo_Clientes {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public int getContador() {
+	public float getContador() {
 		return contador;
 	}
-	public void setContador(int contador) {
+	public void setContador(float contador) {
 		this.contador = contador;
 	}
 	public Nodo_Clientes getSiguiente() {

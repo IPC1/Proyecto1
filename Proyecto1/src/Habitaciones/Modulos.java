@@ -45,6 +45,8 @@ public class Modulos {
 				temp.setFechaInicio(fechaE);
 				temp.setFechaFin(fechaS);
 				temp.setMonto(temp.getMonto()*dias);
+				int i=temp.getContador()+1;
+				temp.setContador(i);
 				JOptionPane.showMessageDialog (null,"Habitacion Asignada");
 			}
 		}else JOptionPane.showMessageDialog (null,"Hubo erro al asignar habitacion");
@@ -62,6 +64,7 @@ public class Modulos {
 			if(NoHabitacion==temp.getHabitacion()){
 				
 				JOptionPane.showMessageDialog (null,"Cuenta:"+temp.getMonto());
+				Cliente.clientes.AgregarContador(temp.getMonto(), temp.getNIT());
 				temp.setNIT(0);
 				temp.setFechaInicio(null);
 				temp.setFechaFin(null);
@@ -71,6 +74,7 @@ public class Modulos {
 					temp.setMonto(350);
 				else if (temp.getTipoHabitacion()=="Exclusiva")
 					temp.setMonto(500);
+				
 				JOptionPane.showMessageDialog (null,"Habitacion Desasignada");
 			}
 		}else JOptionPane.showMessageDialog (null,"Hubo erro al desasignar habitacion");
@@ -206,4 +210,55 @@ public class Modulos {
 		
 	}
 
+	public void OrdenarHabitacionesDes(){
+		Nodo_Habitaciones temp=inicio;
+		String TipoHabitacion, Hotel;
+		Date FechaInicio, FechaFin;
+		int NIT, Torre,nivel, Habitacion,contador;
+		float monto;
+		
+		while(temp.siguiente!=null){
+			Nodo_Habitaciones temp2=temp.siguiente;
+			while(temp2!=null){
+				if(temp.getContador()<temp2.getContador()){
+					TipoHabitacion=temp.getTipoHabitacion();
+					Hotel=temp.getHotel();
+					FechaInicio=temp.getFechaInicio();
+					FechaFin=temp.getFechaFin();
+					NIT=temp.getNIT();
+					Torre=temp.getTorre();
+					nivel=temp.getNivel();
+					Habitacion=temp.getHabitacion();
+					contador=temp.getContador();
+					monto=temp.getMonto();
+					
+					temp.setTipoHabitacion(temp2.getTipoHabitacion());
+					temp.setHotel(temp2.getHotel());
+					temp.setHotel(temp2.getHotel());
+					temp.setFechaInicio(temp2.getFechaInicio());
+					temp.setFechaFin(temp2.getFechaFin());
+					temp.setNIT(temp2.getNIT());
+					temp.setTorre(temp2.getTorre());
+					temp.setNivel(temp.getNivel());
+					temp.setHabitacion(temp2.getHabitacion());
+					temp.setContador(temp2.getContador());
+					temp.setMonto(temp2.getMonto());
+					
+					temp2.setTipoHabitacion(TipoHabitacion);
+					temp2.setHotel(Hotel);
+					temp2.setFechaInicio(FechaInicio);
+					temp2.setFechaFin(FechaFin);
+					temp2.setNIT(NIT);
+					temp2.setTorre(Torre);
+					temp2.setNivel(nivel);
+					temp2.setHabitacion(Habitacion);
+					temp2.setContador(contador);
+					temp2.setMonto(monto);
+			}
+				temp2=temp2.siguiente;
+			}
+			
+		}
+		temp=temp.siguiente;
+	}
 }

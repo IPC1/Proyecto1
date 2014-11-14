@@ -1,9 +1,10 @@
 package Reservaciones;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class Nodo_Reservaciones {
+public class Nodo_Reservaciones implements Serializable {
 	private String Nombre, TipoHabitacion, Referencia, edificio;
 	private Date Entrada, Salida;
 	private int NIT, NoReservacion, NoEdificio, Habitacion,dias;

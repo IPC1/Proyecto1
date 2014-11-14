@@ -1,5 +1,6 @@
 package Reservaciones;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -8,7 +9,7 @@ import Clientes.Cliente;
 import Hoteles.Hotel;
 
 
-public class Lista_Reservaciones {
+public class Lista_Reservaciones implements Serializable {
 Nodo_Reservaciones inicio,fin;
 String nl = System.getProperty("line.separator");
 Lista_Reservaciones(){

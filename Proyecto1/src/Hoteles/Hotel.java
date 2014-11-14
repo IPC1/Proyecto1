@@ -21,8 +21,9 @@ import Recepciones.Recepcion;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
 
-public class Hotel extends JFrame implements ActionListener {
+public class Hotel extends JFrame implements ActionListener, Serializable {
 
 	private PanelImagen contentPane, Pane;
 	private JTextField textField;

@@ -8,7 +8,7 @@ public class Nodo_Habitaciones {
 		private Date FechaInicio, FechaFin;
 		private int NIT, Torre,nivel, Habitacion;
 		private float monto;
-		
+		private int contador=0;
 		
 		Nodo_Habitaciones siguiente;
 		
@@ -109,5 +109,12 @@ public class Nodo_Habitaciones {
 			this.siguiente = siguiente;
 		}
 		
+		public int getContador() {
+			return contador;
+		}
+
+		public void setContador(int contador) {
+			this.contador = contador;
+		}
 		
 }
