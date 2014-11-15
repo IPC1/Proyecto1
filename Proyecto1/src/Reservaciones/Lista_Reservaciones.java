@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 import Clientes.Cliente;
+import Clientes.Nodo_Clientes;
 import Hoteles.Hotel;
 
 
@@ -103,6 +104,60 @@ public void Agregar(int noReservacion, Date fecha, Date fechaF,int dias,String t
 		temp=temp.siguiente;
 		}while(temp!=null);
 		return texto;
+	}
+	
+	public String Listar(int i,Date fecha,int dias, String edificio, int NoEdificio, int habitacion){
+		Nodo_Reservaciones temp=inicio;
+		boolean b= false;
+		while (temp!=null){
+			if (habitacion==temp.getHabitacion()){
+				if(edificio==temp.getEdificio()){
+					if(NoEdificio==temp.getNoEdificio()){
+						if (fecha.getYear()== temp.getEntrada().getYear() && fecha.getMonth()== temp.getEntrada().getMonth() && fecha.getDay()== temp.getEntrada().getDay()){
+							if(dias== temp.getDias()){
+								JOptionPane.showMessageDialog(null,"Existe una reservacion con para las mismas condiciones."+
+							nl+" Para crear la reservación necesita ir a colas");
+								b=true;
+								break;
+							}else if(dias<temp.getDias()){
+								JOptionPane.showMessageDialog(null,"Existe una reservacion con para la misma habitacion con ingreso"+
+										nl+"dia y salida "+(temp.getDias()-dias)+" dias despues."+
+										nl+" Para crear la reservación necesita ir a colas");
+								b=true;
+							}else if(dias>temp.getDias()){
+								JOptionPane.showMessageDialog(null,"Existe una reservacion con para la misma habitacion con ingreso"+
+										nl+"dia y salida "+(dias-temp.getDias())+" dias antes."+
+										nl+" Para crear la reservación necesita ir a colas");
+								b=true;
+							}
+														
+						}
+					}
+					
+				}
+			}temp=temp.siguiente;
+		}
+		if(temp==null){
+			JOptionPane.showMessageDialog(null,"No hay reservacion que coincida.");
+		}
+		String Texto=" ";
+		for (int j=0;j<i;j++){
+			Texto+=temp.getNoReservacion()+" "+
+					temp.getEntrada()+" "+
+					temp.getSalida()+" "+
+					temp.getDias()+" "+
+					temp.getNIT()+" "+
+					temp.getNombre()+" "+
+					temp.getReferencia()+" "+
+					temp.getEdificio()+" "+
+					temp.getNoEdificio()+" "+
+					temp.getHabitacion()+" ";
+			temp=temp.siguiente;
+		}
+		if(Texto==" "){
+			Texto="La lista de Reservaciones esta vacia";
+		}
+		return Texto;
 	}
 	
 	public int contar(){

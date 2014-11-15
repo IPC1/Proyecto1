@@ -1,8 +1,9 @@
 package Habitaciones;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Nodo_Habitaciones {
+public class Nodo_Habitaciones implements Serializable{
 	
 		private String TipoHabitacion, Hotel;
 		private Date FechaInicio, FechaFin;

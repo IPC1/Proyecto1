@@ -1,5 +1,6 @@
 package Habitaciones;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -9,7 +10,7 @@ import Clientes.Nodo_Clientes;
 import Recepciones.Recepcion;
 
 
-public class Torres {
+public class Torres implements Serializable{
 	Nodo_Habitaciones inicio;
 	Nodo_Habitaciones fin;
 	Torres(){

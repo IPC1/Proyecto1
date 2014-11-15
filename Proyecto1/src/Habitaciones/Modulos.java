@@ -1,5 +1,6 @@
 package Habitaciones;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -10,7 +11,7 @@ import Recepciones.Recepcion;
 
 
 
-public class Modulos {
+public class Modulos implements Serializable{
 	Nodo_Habitaciones inicio;
 	Nodo_Habitaciones fin;
 	Modulos(){

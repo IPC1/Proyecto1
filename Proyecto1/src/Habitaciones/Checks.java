@@ -1,11 +1,10 @@
 package Habitaciones;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +15,6 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -25,7 +23,7 @@ import javax.swing.border.EmptyBorder;
 import Hoteles.PanelImagen;
 import Recepciones.Recepcion;
 
-public class Checks extends JFrame implements ActionListener {
+public class Checks extends JFrame implements ActionListener,Serializable {
 
 	private PanelImagen contentPane;
 	private JTextField NoEdificio;

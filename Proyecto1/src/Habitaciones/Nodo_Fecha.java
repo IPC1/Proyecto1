@@ -3,7 +3,7 @@ package Habitaciones;
 
 import java.util.Date;
 
-public class Nodo_Fecha {
+public class Nodo_Fecha  {
 
 	Nodo_Fecha siguiente;
 	Date Fecha;

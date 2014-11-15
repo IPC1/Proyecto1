@@ -2,11 +2,12 @@ package Hoteles;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class PanelImagen extends JPanel{
+public class PanelImagen extends JPanel implements Serializable{
 	ImageIcon imagen;
 	String url;
 	public PanelImagen(String url){

@@ -103,6 +103,22 @@ public class Lista_Clientes implements Serializable{
 		}
 		return Texto;
 	}
+	public String Listar(int i){
+		Nodo_Clientes temp=inicio;
+		String Texto=" ";
+		for (int j=0;j<i;j++){
+			Texto+=temp.getNit()+" "+
+					temp.getNombre()+" "+
+					temp.getDPI()+
+					" "+temp.getDireccion()+
+					" "+temp.getTelefono()+" ";	
+			temp=temp.siguiente;
+		}
+		if(Texto==" "){
+			Texto="La lista de CLientes esta vacia";
+		}
+		return Texto;
+	}
 	
 	public void AgregarContador(float monto, int nit){
 		Nodo_Clientes temp =inicio;
@@ -119,15 +135,17 @@ public class Lista_Clientes implements Serializable{
 		}
 	}
 	
-	public void OrdenarClientesDes(){
+	public String OrdenarClientesDes(){
 		Nodo_Clientes temp=inicio;
 		String nombre, direccion, telefono;
-		int nit,DPI;
+		int nit,DPI, comparison;
 		float contador;
 		while(temp.siguiente!=null){
 			Nodo_Clientes temp2=temp.siguiente;
 			while(temp2!=null){
-				if(temp.getContador()<temp2.getContador()){
+				comparison = temp.getNombre().compareTo(temp2.getNombre());
+				if((temp.getContador()<temp2.getContador())||
+						(temp.getContador()==temp2.getContador() && comparison>0)){
 					nombre=temp.getNombre();
 					direccion=temp.getDireccion();
 					telefono=temp.getTelefono();
@@ -150,9 +168,9 @@ public class Lista_Clientes implements Serializable{
 					temp2.setContador(contador);
 			}
 				temp2=temp2.siguiente;
-			}
-			
+			}temp=temp.siguiente;
 		}
-		temp=temp.siguiente;
+		
+		return Listar(10);
 	}
 }

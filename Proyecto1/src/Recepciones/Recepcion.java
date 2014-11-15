@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +17,7 @@ import Hoteles.PanelImagen;
 import Reservaciones.Reservacion;
 import Servicios.Servicio;
 
-public class Recepcion extends JFrame implements ActionListener{
+public class Recepcion extends JFrame implements ActionListener, Serializable{
 
 	private PanelImagen contentPane;
 	JLabel lblRecepcionHotel = new JLabel("HOTELES DE CENTRO AMERICA");

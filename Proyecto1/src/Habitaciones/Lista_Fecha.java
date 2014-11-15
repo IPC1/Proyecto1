@@ -1,10 +1,11 @@
 package Habitaciones;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
 
-public class Lista_Fecha {
+public class Lista_Fecha implements Serializable{
 
 	Nodo_Fecha inicio, fin;
 
